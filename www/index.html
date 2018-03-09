@@ -45,11 +45,48 @@
 
 <body>
     <div class="app">
-        <h1>PhoneGap</h1>
-        <div id="deviceready" class="blink">
-            <p class="event listening">Connecting to Device</p>
-            <p class="event received">Device is Ready</p>
+        <!-- Views -->
+        <!-- Login/Sign Up -->
+        <div id="app-signup">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input placeholder="Name" id="name" type="text" class="validate">
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input placeholder="Address" id="address" type="text" class="validate">
+                </div>
+            </div>
+            <div class="row">
+                <div class="switch">
+                    <label class="driver-checkbox-label">
+                        I am a driver.
+                        <input type="checkbox" id="driver-toggle" class="driver-checkbox">
+                        <span class="lever"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="row app-number-rides-question">
+                <div class="input-field col s12">
+                    <select id="app-number-rides">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                    <label class="app-number-rides-label">How many seats in your car?</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <a class="waves-effect waves-light btn app-signup-button">Save &amp; Continue</a>
+                </div>
+            </div>
         </div>
+        <!-- End of Login/Sign Up -->
     </div>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/jquery.min.js"></script>
