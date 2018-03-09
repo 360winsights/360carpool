@@ -20,7 +20,7 @@ var app = {
     // Application Constructor
     initialize: function() {
         $(document).ready(function () {
-            $('#top-nav').hide();
+            $('#new-ride').hide();
             
             $('#driver-toggle').change(function(){
                 if ($('#driver-toggle').prop('checked') === true) {
@@ -34,7 +34,7 @@ var app = {
 
             $('.app-signup-button').on('click', function() {
                 $('#app-signup').hide();
-                $('#top-nav').show();
+                $('#new-ride').show();
             })
         })
         

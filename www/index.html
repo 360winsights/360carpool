@@ -88,34 +88,59 @@
                 </div>
             </div>
             <!--Sign Up Ends-->
-            <div id="top-nav">
+
+            <!-- NEW RIDE SCREEN -->
+            <div id="new-ride">
                 <div class="navbar-fixed">
                     <nav>
-                        <div class="nav-extended cyan lighten-1">
-                            <div class="nav-wrapper">
-                                <a href="#" class="brand-logo center">carp<span class="orange-text text-darken-3">ü</span>l</a>
-                                <ul class="left">
-                                    <!--<li><a href="#"><i class="material-icons left">person</i></a></li>-->
-                                    <li><a href="#" class="profile"><img src="img/profile.svg" /></a></li>
-                                    <li><a href="#" class="notifications"><img src="img/notif.svg" /></a></li>
-                                </ul>
-                                <ul class="right">
-                                    <li><a href="#" class="stats"><img src="img/stats.svg" /></a></li>
-                                    <li><a href="#" class="new-ride"><img src="img/new_drive.svg" /></a></li>
-                                </ul>
-                            </div>
-                            <div class="nav-content">
-                                <ul class="tabs tabs-transparent">
-                                    <li class="tab"><a href="#">Your Riders</a></li>
-                                    <li class="tab"><a href="#">Available Rides</a></li>
-                                </ul>
-                            </div>
+                        <div class="nav-wrapper cyan lighten-1">
+                            <a href="#" class="title center">New Ride</a>
+                            <ul class="left">
+                                <li><a href="#">CREATE</a></li>
+                            </ul>
+                            <ul class="right">
+                                <li><a href="#">CANCEL</a></li>
+                            </ul>
                         </div>
                     </nav>
                 </div>
+                <div class="container">
+                    <div class="row">
+                        <form class="col s12">
+                            <div class="row">
+                                <div class="col s12">
+                                    <p class="line-title">Select Destination</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s1">
+                                    <i class="material-icons">location_on</i>
+                                </div>
+                                <div class="input-field col s11">
+                                    <input type="text" name="address" />
+                                    <label for="address">Enter address</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s4">
+                                    <p class="line-title">Select Time</p>
+                                </div>
+                                <div class="col s8">
+                                    <input type="text" name="time" class="timepicker" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
+            <!-- END NEW RIDE SCREEN -->
         </div>
     </div>
+
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
