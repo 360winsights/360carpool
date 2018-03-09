@@ -46,6 +46,48 @@
 <body>
     <div class="app">
         <div id="deviceready">
+            <!-- Views -->
+            <!-- Login/Sign Up -->
+            <div id="app-signup">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="Name" id="name" type="text" class="validate">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="Address" id="address" type="text" class="validate">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="switch">
+                        <label class="driver-checkbox-label">
+                            I am a driver.
+                            <input type="checkbox" id="driver-toggle" class="driver-checkbox">
+                            <span class="lever"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="row app-number-rides-question">
+                    <div class="input-field col s12">
+                        <select id="app-number-rides">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                        <label class="app-number-rides-label">How many seats in your car?</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <a class="waves-effect waves-light btn app-signup-button">Save &amp; Continue</a>
+                    </div>
+                </div>
+            </div>
+            <!--Sign Up Ends-->
             <div id="top-nav">
                 <div class="navbar-fixed">
                     <nav>

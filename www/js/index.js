@@ -19,6 +19,25 @@
 var app = {
     // Application Constructor
     initialize: function() {
+        $(document).ready(function () {
+            $('#top-nav').hide();
+            
+            $('#driver-toggle').change(function(){
+                if ($('#driver-toggle').prop('checked') === true) {
+                    $('.app-number-rides-question').show();
+                    $('#app-number-rides').material_select();
+                } else {
+                    $('.app-number-rides-question').hide();
+                    $('#app-number-rides').material_select('destroy');
+                }
+            })
+
+            $('.app-signup-button').on('click', function() {
+                $('#app-signup').hide();
+                $('#top-nav').show();
+            })
+        })
+        
         this.bindEvents();
     },
     // Bind Event Listeners
@@ -37,13 +56,14 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+        // console.log(id)
+        // var parentElement = document.getElementById(id);
+        // var listeningElement = parentElement.querySelector('.listening');
+        // var receivedElement = parentElement.querySelector('.received');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+        // listeningElement.setAttribute('style', 'display:none;');
+        // receivedElement.setAttribute('style', 'display:block;');
 
-        console.log('Received Event: ' + id);
+        // console.log('Received Event: ' + id);
     }
 };

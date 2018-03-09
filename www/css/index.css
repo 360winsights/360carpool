@@ -24,15 +24,48 @@ body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    background-color:#E4E4E4;
-    background-attachment:fixed;
+    background-color: #FFFFFF;
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-size:16px;
     font-size:12px;
     height:100%;
     margin:0px;
     padding:0px;
-    text-transform:uppercase;
     width:100%;
+    text-align:center;
+}
+
+#app-signup {
+    margin-top: 30%;
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+}
+
+.driver-checkbox-label {
+    float: left;
+    margin-left: 10px;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.driver-checkbox {
+    text-align: right;
+}
+
+.app-signup-button {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.app-number-rides-label {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 16px !important;
+}
+
+.app-number-rides-question {
+    display: none;
 }
 
 h1 {
