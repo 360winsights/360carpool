@@ -19,6 +19,7 @@
 var app = {
     // Application Constructor
     initialize: function() {
+        var self = this
         $(document).ready(function () {
             // Initialize timepicker
             $('.timepicker').pickatime({
@@ -33,8 +34,7 @@ var app = {
                 aftershow: function(){} //Function for after opening timepicker
             })
 
-            $('#top-nav').hide()
-            $('#new-ride').hide()
+            self.hideAll()
             
             $('#driver-toggle').change(function(){
                 if ($('#driver-toggle').prop('checked') === true) {
@@ -48,11 +48,11 @@ var app = {
 
             $('.app-signup-button').on('click', function() {
                 $('#app-signup').hide()
-                $('#top-nav').show()
+                $('#app-riders-section').show()
             })
 
             $('.new-ride').on('click', function () {
-                $('#top-nav').hide()
+                self.hideAll()
                 $('#new-ride').show()
             })
         })
@@ -84,5 +84,10 @@ var app = {
         // receivedElement.setAttribute('style', 'display:block;');
 
         // console.log('Received Event: ' + id);
+    },
+    hideAll: function () {
+        $('#top-nav').hide()
+        $('#new-ride').hide()
+        $('#app-riders-section').hide()
     }
 };
