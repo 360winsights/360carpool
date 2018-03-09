@@ -33,21 +33,27 @@ var app = {
                 aftershow: function(){} //Function for after opening timepicker
             })
 
-            $('#new-ride').hide();
+            $('#top-nav').hide()
+            $('#new-ride').hide()
             
             $('#driver-toggle').change(function(){
                 if ($('#driver-toggle').prop('checked') === true) {
-                    $('.app-number-rides-question').show();
-                    $('#app-number-rides').material_select();
+                    $('.app-number-rides-question').show()
+                    $('#app-number-rides').material_select()
                 } else {
-                    $('.app-number-rides-question').hide();
-                    $('#app-number-rides').material_select('destroy');
+                    $('.app-number-rides-question').hide()
+                    $('#app-number-rides').material_select('destroy')
                 }
             })
 
             $('.app-signup-button').on('click', function() {
-                $('#app-signup').hide();
-                $('#new-ride').show();
+                $('#app-signup').hide()
+                $('#top-nav').show()
+            })
+
+            $('.new-ride').on('click', function () {
+                $('#top-nav').hide()
+                $('#new-ride').show()
             })
         })
         
