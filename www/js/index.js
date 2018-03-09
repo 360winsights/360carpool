@@ -20,6 +20,8 @@ var app = {
     // Application Constructor
     initialize: function() {
         $(document).ready(function () {
+            $('#top-nav').hide();
+            
             $('#driver-toggle').change(function(){
                 if ($('#driver-toggle').prop('checked') === true) {
                     $('.app-number-rides-question').show();
@@ -28,6 +30,11 @@ var app = {
                     $('.app-number-rides-question').hide();
                     $('#app-number-rides').material_select('destroy');
                 }
+            })
+
+            $('.app-signup-button').on('click', function() {
+                $('#app-signup').hide();
+                $('#top-nav').show();
             })
         })
         
