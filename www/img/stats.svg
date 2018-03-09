@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
+    <title>stats</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Riders-List" transform="translate(-278.000000, -45.000000)">
+            <g id="app-bar-+-status-bar">
+                <g id="app-bar">
+                    <g id="stats" transform="translate(277.000000, 44.000000)">
+                        <polygon id="Shape" points="0 0 20 0 20 20 0 20"></polygon>
+                        <path d="M10.8333333,1.70833333 L10.8333333,4.23333333 C13.6583333,4.64166667 15.8333333,7.05833333 15.8333333,10 C15.8333333,10.75 15.6833333,11.4583333 15.4333333,12.1166667 L17.6,13.3916667 C18.0666667,12.3583333 18.3333333,11.2083333 18.3333333,10 C18.3333333,5.68333333 15.0416667,2.125 10.8333333,1.70833333 Z M10,15.8333333 C6.775,15.8333333 4.16666667,13.225 4.16666667,10 C4.16666667,7.05833333 6.34166667,4.64166667 9.16666667,4.23333333 L9.16666667,1.70833333 C4.95,2.125 1.66666667,5.675 1.66666667,10 C1.66666667,14.6 5.39166667,18.3333333 9.99166667,18.3333333 C12.75,18.3333333 15.1916667,16.9916667 16.7083333,14.925 L14.5416667,13.65 C13.475,14.9833333 11.8416667,15.8333333 10,15.8333333 Z" id="Shape" fill="#FFFFFF" fill-rule="nonzero"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

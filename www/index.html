@@ -40,15 +40,38 @@
 
     <link rel="stylesheet" type="text/css" href="css/materialize.min.css" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
-    <title>Hello World</title>
+    <title>Carpül</title>
 </head>
 
 <body>
     <div class="app">
-        <h1>PhoneGap</h1>
-        <div id="deviceready" class="blink">
-            <p class="event listening">Connecting to Device</p>
-            <p class="event received">Device is Ready</p>
+        <div id="deviceready">
+            <div id="top-nav">
+                <div class="navbar-fixed">
+                    <nav>
+                        <div class="nav-extended cyan lighten-1">
+                            <div class="nav-wrapper">
+                                <a href="#" class="brand-logo center">carp<span class="orange-text text-darken-3">ü</span>l</a>
+                                <ul class="left">
+                                    <!--<li><a href="#"><i class="material-icons left">person</i></a></li>-->
+                                    <li><a href="#" class="profile"><img src="img/profile.svg" /></a></li>
+                                    <li><a href="#" class="notifications"><img src="img/notif.svg" /></a></li>
+                                </ul>
+                                <ul class="right">
+                                    <li><a href="#" class="stats"><img src="img/stats.svg" /></a></li>
+                                    <li><a href="#" class="new-ride"><img src="img/new_drive.svg" /></a></li>
+                                </ul>
+                            </div>
+                            <div class="nav-content">
+                                <ul class="tabs tabs-transparent">
+                                    <li class="tab"><a href="#">Your Riders</a></li>
+                                    <li class="tab"><a href="#">Available Rides</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
         </div>
     </div>
     <script type="text/javascript" src="cordova.js"></script>
