@@ -126,10 +126,10 @@
                         <div class="nav-wrapper cyan lighten-1">
                             <a href="#" class="title center">New Ride</a>
                             <ul class="left">
-                                <li><a href="#">CREATE</a></li>
+                                <li><a class="create-ride">CREATE</a></li>
                             </ul>
                             <ul class="right">
-                                <li><a href="#">CANCEL</a></li>
+                                <li><a class="cancel">CANCEL</a></li>
                             </ul>
                         </div>
                     </nav>
@@ -147,7 +147,7 @@
                                     <i class="material-icons">location_on</i>
                                 </div>
                                 <div class="input-field col s11">
-                                    <input type="text" name="address" />
+                                    <input type="text" name="address" id="destination-address" />
                                     <label for="address">Enter address</label>
                                 </div>
                             </div>
@@ -156,7 +156,7 @@
                                     <p class="line-title">Select Time</p>
                                 </div>
                                 <div class="col s8">
-                                    <input type="text" name="time" class="timepicker" />
+                                    <input type="text" name="time" id="departure-time" class="timepicker" />
                                 </div>
                             </div>
                             <div class="row">
