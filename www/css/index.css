@@ -78,6 +78,11 @@ body {
     clear: both;
 }
 
+#no-ride-created {
+    margin-top: 50px;
+    clear: both;
+}
+
 .title-name {
     float: left;
 }

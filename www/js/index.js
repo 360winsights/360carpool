@@ -26,7 +26,8 @@ var state = {
     },
     drivers: [],
     riders: [],
-    acceptedRiders: []
+    acceptedRiders: [],
+    rideCreated: false
 }
 
 var util = {
@@ -137,14 +138,19 @@ var util = {
         $('#rider-information').hide()
         $('#user-profile').hide()
         $('#stats').hide()
+        $('#no-ride-created').hide()
     },
     applyNavbarProfile: function (profile) {
         if (profile === 'driver') {
             $('#main-nav').show()
             $('#simple-nav').hide()
             $('#nav-tabs').empty()
-            $('#nav-tabs').append('<li class="tab riders"><a>Riders</a></li>')
-            $('#nav-tabs').append('<li class="tab ride-status"><a>Ride Status</a></li>')
+            if (state.rideCreated) {
+                $('#nav-tabs').append('<li class="tab riders"><a>Riders</a></li>')
+                $('#nav-tabs').append('<li class="tab ride-status"><a>Ride Status</a></li>')
+            } else {
+                $('#nav-tabs').append('<li class="tab riders"><a>Riders</a></li>')
+            }
         } else if (profile === 'rider') {
             $('#main-nav').show()
             $('#simple-nav').hide()
@@ -188,7 +194,11 @@ var util = {
     mainScreen: function () {
         if (util.userIsDriver()) {
             util.applyNavbarProfile('driver')
-            $('#app-riders-section').show()
+            if (state.rideCreated) {
+                $('#app-riders-section').show()
+            } else {
+                $('#no-ride-created').show()
+            }
             var data = util.getDummyRiderData()
             if (data) {
                 $('#app-riders-section').children('ul').remove()
@@ -217,6 +227,7 @@ var util = {
                                                     .reduce(function (acc, val) { return acc * 60 + val }, 0)
                                               : 1025
 
+        state.rideCreated = true
         // Create a ride
     },
     saveInitialProfile: function () {
