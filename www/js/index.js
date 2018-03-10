@@ -140,6 +140,13 @@ var util = {
             $('#left-action').empty()
             $('#right-action').empty()
             $('#left-action').append('<li><a class="cancel">BACK</a></li>')
+        } else if (profile === 'stats') {
+            $('#main-nav').hide()
+            $('#simple-nav').show()
+            $('#nav-title').text('Eco-Stats')
+            $('#left-action').empty()
+            $('#right-action').empty()
+            $('#left-action').append('<li><a class="cancel">BACK</a></li>')
         } else {
             $('#main-nav').hide()
             $('#simple-nav').hide()
@@ -220,6 +227,12 @@ var app = {
                 util.hideAll()
                 util.applyNavbarProfile('new-ride')
                 $('#new-ride').show()
+            })
+
+            $('.stats').on('click', function () {
+                util.hideAll()
+                util.applyNavbarProfile('stats')
+                $('#stats').show()
             })
 
             $(document).on('click', '.rider', function() {
