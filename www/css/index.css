@@ -151,3 +151,8 @@ nav .title.center {
 #stats {
     margin-top: 100px;
 }
+
+#ride-requested {
+    margin-top: 50px;
+    clear: both;
+}

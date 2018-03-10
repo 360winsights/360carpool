@@ -84,6 +84,7 @@ var state = {
     ],
     acceptedRiders: [],
     rideCreated: false,
+    rideRequested: false,
     workAddress: '300 King St, Whitby, ON'
 }
 
@@ -120,6 +121,7 @@ var util = {
         $('#user-profile').hide()
         $('#stats').hide()
         $('#no-ride-created').hide()
+        $('#ride-requested').hide()
     },
     applyNavbarProfile: function (profile) {
         if (profile === 'driver') {
@@ -189,7 +191,11 @@ var util = {
             }
         } else {
             util.applyNavbarProfile('rider')
-            $('#app-drivers-section').show()
+            if (state.rideRequested) {
+                $('#ride-requested').show()
+            } else {
+                $('#app-drivers-section').show()
+            }
             var data = { drivers: state.drivers }
             if (data) {
                 $('#app-drivers-section').children('ul').remove()
@@ -213,6 +219,9 @@ var util = {
     },
     createRide: function () {
         state.rideCreated = true
+    },
+    requestRide: function () {
+        state.rideRequested = true
     },
     saveInitialProfile: function () {
         state.profile.fullName = $('#name').val()
@@ -341,6 +350,7 @@ var app = {
                 }
                 state.riders.push(rider)
                 util.hideAll()
+                util.requestRide()
                 util.mainScreen()
             })
 
