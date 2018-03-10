@@ -153,15 +153,10 @@ var app = {
                 $('#new-ride').show()
             })
 
-            $('.rider').on('click', function() {
+            $(document).on('click', '.rider', function() {
                 util.hideAll()
-                $('#rider-information').show()
-            })
-
-            // $(document).on('click', '.rider', function() {
-            //     $('#app-drivers-section').hide();
-            //     $('#rider-information').show();
-            // })  
+                $('#rider-information').show();
+            })  
 
             $('.create-ride').on('click', function () {
                 util.hideAll()
