@@ -83,7 +83,8 @@ var state = {
         }
     ],
     acceptedRiders: [],
-    rideCreated: false
+    rideCreated: false,
+    workAddress: '300 King St, Whitby, ON'
 }
 
 var util = {
