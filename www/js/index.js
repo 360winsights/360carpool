@@ -16,6 +16,68 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
+var util = {
+    getDummyDriverData: function () {
+        var data = {
+            drivers: [
+                {
+                    name: 'John Doe',
+                    phone: '6471234567',
+                    distanceFromHome: 1,
+                    timeLeaving: '18:00',
+                    seatsAvailable: 2,
+                    karma: 2
+                },
+                {
+                    name: 'Steve Arnott',
+                    phone: '4161234567',
+                    distanceFromHome: 2,
+                    timeLeaving: '18:00',
+                    seatsAvailable: 1,
+                    karma: -1
+                },
+                {
+                    name: 'Lindsay Bluth',
+                    phone: '5141234567',
+                    distanceFromHome: 2,
+                    timeLeaving: '18:30',
+                    seatsAvailable: 3,
+                    karma: 100
+                }
+            ]
+        };
+
+        return data;
+    },  
+    isDriver: function (userType) {
+        //TODO: Add ajax call
+        if (this.checkLocalStorage('localStorage')) {
+            window.localStorage.setItem('driver', userType);
+        }
+    },
+    getUserType: function() {
+        if (this.checkLocalStorage('localStorage')) {
+            return window.localStorage.getItem('driver');
+        }
+    },
+    checkLocalStorage: function (type) {
+        try {
+            var storage = window[type],
+                x = '__storage_test__';
+            storage.setItem(x, x);
+            storage.removeItem(x);
+            return true;
+        }
+        catch(e) {
+            return false;
+        }
+    },
+    getListItemTemplate: function (data) {
+        var template = '<utl '
+    }
+};
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -34,25 +96,55 @@ var app = {
                 aftershow: function(){} //Function for after opening timepicker
             })
             
+            var driver = null;
+            var self = this;
             $('#driver-toggle').change(function(){
                 if ($('#driver-toggle').prop('checked') === true) {
                     $('.app-number-rides-question').show()
                     $('#app-number-rides').material_select()
+                    util.isDriver(true);
                 } else {
                     $('.app-number-rides-question').hide()
                     $('#app-number-rides').material_select('destroy')
+                    util.isDriver(false);
                 }
             })
 
             $('.app-signup-button').on('click', function() {
                 $('#app-signup').hide()
-                $('#app-riders-section').show()
+
+                $('#top-nav').show()
+
+                $('.nav-title').addClass('active')
+                
+               
+                if (util.getUserType()) {
+                    $('.nav-title').html('Riders')
+                    $('#app-drivers-section').show();
+                    var data = util.getDummyDriverData();
+                    if (data) {
+                        var source = $('#drivers-list').html();
+                        var template = Handlebars.compile(source);
+                        $('#app-drivers-section').append(template(data))
+                        
+                    }
+                } 
             })
 
             $('.new-ride').on('click', function () {
                 self.hideAll()
                 $('#new-ride').show()
             })
+
+            $('.rider').on('click', function() {
+                $('#app-drivers-section').hide();
+                $('#rider-information').show();
+            })
+
+            // $(document).on('click', '.rider', function() {
+            //     $('#app-drivers-section').hide();
+            //     $('#rider-information').show();
+            // })  
 
             $('.create-ride').on('click', function () {
                 self.hideAll()
@@ -70,6 +162,7 @@ var app = {
         
         this.bindEvents();
     },
+
     // Bind Event Listeners
     //
     // Bind any events that are required on startup. Common events are:

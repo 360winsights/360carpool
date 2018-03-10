@@ -67,6 +67,27 @@ body {
     display: none;
 }
 
+#app-drivers-section {
+    display: none;
+}
+
+#app-drivers-section, #rider-information {
+    margin-top: 50px;
+    clear: both;
+}
+
+.title-name {
+    float: left;
+}
+
+.more-info-driver i:not(:first-child)  {
+    margin-left: 20px;
+}
+
+.color-grey {
+    color:#9e9e9e;
+}
+
 h1 {
     font-size:24px;
     font-weight:normal;
@@ -74,6 +95,10 @@ h1 {
     overflow:visible;
     padding:0px;
     text-align:center;
+}
+
+#rider-information {
+    display: none;
 }
 
 @keyframes fade {
