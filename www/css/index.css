@@ -143,3 +143,11 @@ nav .title.center {
 #signin {
     margin-top: -5rem;
 }
+
+.little {
+    font-size: 1rem;
+}
+
+#stats {
+    margin-top: 100px;
+}
