@@ -122,6 +122,7 @@ var util = {
         $('#stats').hide()
         $('#no-ride-created').hide()
         $('#ride-requested').hide()
+        $('#ride-finalized').hide()
     },
     applyNavbarProfile: function (profile) {
         if (profile === 'driver') {
@@ -314,6 +315,12 @@ var app = {
                 util.hideAll()
                 util.applyNavbarProfile('stats')
                 $('#stats').show()
+            })
+
+            $(document).on('click', '.begin-ride', function () {
+                util.hideAll()
+                util.applyNavbarProfile('driver')
+                $('#ride-finalized').show()
             })
 
             $(document).on('click', '.user-image', function() {

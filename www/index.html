@@ -156,7 +156,7 @@
                                 </p>
                                 <br>
                                 <p class="left more-info-driver color-grey">
-                                    <i class="tiny material-icons">location_on</i> {{distanceFromHome}}
+                                    <i class="tiny material-icons">location_on</i> {{distanceFromHome}}km
                                     <i class="tiny material-icons">access_time</i> {{timeLeaving}}
                                 </p>
                                 <a class="secondary-content accept-rider">ACCEPT RIDER</a>
@@ -199,7 +199,7 @@
                                 </p>
                                 <br>
                                 <p class="left more-info-driver color-grey">
-                                    <i class="tiny material-icons">location_on</i> {{distanceFromHome}}
+                                    <i class="tiny material-icons">location_on</i> {{distanceFromHome}}km
                                     <i class="tiny material-icons">access_time</i> {{timeLeaving}}
                                     <i class="tiny material-icons">group</i> {{seatsAvailable}}
                                 </p>
@@ -262,12 +262,17 @@
                                 </p>
                                 <br>
                                 <p class="left more-info-driver color-grey">
-                                    <i class="tiny material-icons">location_on</i> {{distanceFromHome}}
+                                    <i class="tiny material-icons">location_on</i> {{distanceFromHome}}km
                                     <i class="tiny material-icons">access_time</i> {{timeLeaving}}
                                 </p>
                                 <a class="secondary-content remove-rider">REMOVE RIDER</a>
                            </li>
                         {{/each}}
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <a class="waves-effect waves-light btn cyan lighten-1 begin-ride">Begin Ride</a>
+                            </div>
+                        </div>
                     </ul>
                 </script>
             </div>
@@ -414,6 +419,18 @@
                         <div class="col s12">
                             <h4>Your request has been sent!</h4>
                             <h5>We'll let you know when you've been approved</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- RIDE REQUESTED SCREEN -->
+
+            <!-- RIDE REQUESTED SCREEN -->
+            <div id="ride-finalized">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12">
+                            <h4>Your ride is good to go!</h4>
                         </div>
                     </div>
                 </div>
