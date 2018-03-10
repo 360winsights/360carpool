@@ -25,7 +25,8 @@ var state = {
         seatsInCar: 1
     },
     drivers: [],
-    riders: []
+    riders: [],
+    acceptedRiders: []
 }
 
 var util = {
