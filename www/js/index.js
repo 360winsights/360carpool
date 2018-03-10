@@ -113,6 +113,7 @@ var util = {
         $('#app-drivers-section').hide()
         $('#app-riders-section').hide()
         $('#rider-information').hide()
+        $('#stats').hide()
     },
     applyNavbarProfile: function (profile) {
         if (profile === 'driver') {
