@@ -221,15 +221,18 @@ var app = {
                 if ($('#driver-toggle').prop('checked') === true) {
                     $('.app-number-rides-question').show()
                     $('#app-number-rides').material_select()
-                    util.isDriver(true)
                 } else {
                     $('.app-number-rides-question').hide()
                     $('#app-number-rides').material_select('destroy')
-                    util.isDriver(false)
                 }
             })
 
             $('.app-signup-button').on('click', function() {
+                if ($('#driver-toggle').prop('checked') === true) {
+                    util.isDriver(true)
+                } else {
+                    util.isDriver(false)
+                }
                 util.hideAll()
                 util.mainScreen()
             })
