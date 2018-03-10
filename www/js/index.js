@@ -334,7 +334,13 @@ var app = {
                 }
                 $('#riderName').html(data.name);
                 $('#riderPhone').html(data.phone)
-                $('#riderKarma').html(data.karma)
+                if (data.karma === 0) {
+                    $('#riderKarma').html(data.karma)
+                } else if (data.karma > 0) {
+                    $('#riderKarma').html('<span class="green-text">' + data.karma + '</span>')
+                } else {
+                    $('#riderKarma').html('<span class="red-text">' + data.karma + '</span>')
+                }
             })
 
             $(document).on('click', '.accept-rider', function() {
