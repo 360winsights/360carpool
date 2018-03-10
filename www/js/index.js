@@ -128,7 +128,21 @@ var util = {
         } else if (profile === 'new-ride') {
             $('#main-nav').hide()
             $('#simple-nav').show()
+            $('#nav-title').text('New Ride')
+            $('#left-action').empty()
+            $('#right-action').empty()
+            $('#left-action').append('<li><a class="create-ride">CREATE</a></li>')
+            $('#right-action').append('<li><a class="cancel">CANCEL</a></li>')
+        } else if (profile === 'rider-profile') {
+            $('#main-nav').hide()
+            $('#simple-nav').show()
+            $('#nav-title').text('Rider Profile')
+            $('#left-action').empty()
+            $('#right-action').empty()
+            $('#left-action').append('<li><a class="cancel">BACK</a></li>')
         } else {
+            $('#main-nav').hide()
+            $('#simple-nav').hide()
         }
     },
     mainScreen: function () {
@@ -210,20 +224,22 @@ var app = {
 
             $(document).on('click', '.rider', function() {
                 util.hideAll()
-                $('#rider-information').show();
-            })  
+                util.applyNavbarProfile('rider-profile')
+                $('#rider-information').show()
+            })
 
-            $('.create-ride').on('click', function () {
+            $(document).on('click', '.create-ride', function () {
                 util.hideAll()
                 util.createRide()
                 util.mainScreen()
             })
 
-            $('.cancel').on('click', function () {
+            $(document).on('click', '.cancel', function () {
                 util.hideAll()
                 util.mainScreen()
             })
 
+            // Upon app load, hide everything then show signup page
             util.hideAll()
             $('#app-signup').show()
         })
