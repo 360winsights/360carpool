@@ -235,7 +235,7 @@ var app = {
             
             var driver = null
             $('#driver-toggle').change(function(){
-                if ($('#driver-toggle').prop('checked') === true) {
+                if ($('#driver-toggle').prop('checked')) {
                     $('.app-number-rides-question').show()
                     $('#app-number-rides').material_select()
                 } else {
@@ -266,6 +266,11 @@ var app = {
                 $('#profile-name').val(state.profile.fullName)
                 $('#profile-address').val(state.profile.homeAddress)
                 $('#profile-driver-toggle').prop('checked', state.profile.isDriver)
+                if (state.profile.isDriver) {
+                    $('.app-number-rides-question').show()
+                } else {
+                    $('.app-number-rides-question').hide()
+                }
             })
 
             $('.new-ride').on('click', function () {
@@ -306,6 +311,11 @@ var app = {
             // Upon app load, hide everything then show signup page
             util.hideAll()
             $('#app-signup').show()
+            if (state.profile.isDriver) {
+                $('.app-number-rides-question').show()
+            } else {
+                $('.app-number-rides-question').hide()
+            }
         })
         
         this.bindEvents()
