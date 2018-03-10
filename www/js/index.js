@@ -46,19 +46,19 @@ var util = {
                     karma: 100
                 }
             ]
-        };
+        }
 
         return data;
     },  
     isDriver: function (userType) {
         //TODO: Add ajax call
         if (this.checkLocalStorage('localStorage')) {
-            window.localStorage.setItem('driver', userType);
+            window.localStorage.setItem('driver', userType)
         }
     },
     getUserType: function() {
         if (this.checkLocalStorage('localStorage')) {
-            return window.localStorage.getItem('driver');
+            return window.localStorage.getItem('driver')
         }
     },
     checkLocalStorage: function (type) {
@@ -75,8 +75,27 @@ var util = {
     },
     getListItemTemplate: function (data) {
         var template = '<utl '
+    },
+    hideAll: function () {
+        $('#app-signup').hide()
+        $('#top-nav').hide()
+        $('#new-ride').hide()
+        $('#app-drivers-section').hide()
+        $('#app-riders-section').hide()
+        $('#rider-information').hide()
+    },
+    createRide: function () {
+        // Replace fallbacks with current user data
+        var dest = $('#destination-address').val() || '502 Green St, Whitby, ON L1N 4E5'
+        var time = $('#departure-time').val() ? $('#departure-time').val()
+                                                    .split(':')
+                                                    .map(function (val) { return parseInt(val, 10) })
+                                                    .reduce(function (acc, val) { return acc * 60 + val }, 0)
+                                              : 1025
+
+        // Create a ride
     }
-};
+}
 
 var app = {
     // Application Constructor
@@ -97,27 +116,25 @@ var app = {
             })
             
             var driver = null;
-            var self = this;
             $('#driver-toggle').change(function(){
                 if ($('#driver-toggle').prop('checked') === true) {
                     $('.app-number-rides-question').show()
                     $('#app-number-rides').material_select()
-                    util.isDriver(true);
+                    util.isDriver(true)
                 } else {
                     $('.app-number-rides-question').hide()
                     $('#app-number-rides').material_select('destroy')
-                    util.isDriver(false);
+                    util.isDriver(false)
                 }
             })
 
             $('.app-signup-button').on('click', function() {
-                $('#app-signup').hide()
+                util.hideAll()
 
                 $('#top-nav').show()
 
                 $('.nav-title').addClass('active')
                 
-               
                 if (util.getUserType()) {
                     $('.nav-title').html('Riders')
                     $('#app-drivers-section').show();
@@ -132,13 +149,13 @@ var app = {
             })
 
             $('.new-ride').on('click', function () {
-                self.hideAll()
+                util.hideAll()
                 $('#new-ride').show()
             })
 
             $('.rider').on('click', function() {
-                $('#app-drivers-section').hide();
-                $('#rider-information').show();
+                util.hideAll()
+                $('#rider-information').show()
             })
 
             // $(document).on('click', '.rider', function() {
@@ -147,20 +164,21 @@ var app = {
             // })  
 
             $('.create-ride').on('click', function () {
-                self.hideAll()
-                self.createRide()
+                util.hideAll()
+                util.createRide()
                 $('#app-riders-section').show()
             })
 
             $('.cancel').on('click', function () {
-                self.hideAll()
+                util.hideAll()
                 $('#app-riders-section').show()
             })
 
-            self.hideAll()
+            util.hideAll()
+            $('#app-signup').show()
         })
         
-        this.bindEvents();
+        this.bindEvents()
     },
 
     // Bind Event Listeners
@@ -168,14 +186,14 @@ var app = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener('deviceready', this.onDeviceReady, false)
     },
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        app.receivedEvent('deviceready');
+        app.receivedEvent('deviceready')
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -188,21 +206,5 @@ var app = {
         // receivedElement.setAttribute('style', 'display:block;');
 
         // console.log('Received Event: ' + id);
-    },
-    hideAll: function () {
-        $('#top-nav').hide()
-        $('#new-ride').hide()
-        $('#app-riders-section').hide()
-    },
-    createRide: function () {
-        // Replace fallbacks with current user data
-        var dest = $('#destination-address').val() || '502 Green St, Whitby, ON L1N 4E5'
-        var time = $('#departure-time').val() ? $('#departure-time').val()
-                                                    .split(':')
-                                                    .map(function (val) { return parseInt(val, 10) })
-                                                    .reduce(function (acc, val) { return acc * 60 + val }, 0)
-                                              : 1025
-
-        // Create a ride
     }
-};
+}

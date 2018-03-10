@@ -98,7 +98,6 @@
                             <div class="nav-wrapper">
                                 <a href="#" class="brand-logo center">carp<span class="orange-text text-darken-3">ü</span>l</a>
                                 <ul class="left">
-                                    <!--<li><a href="#"><i class="material-icons left">person</i></a></li>-->
                                     <li><a href="#" class="profile"><img src="img/profile.svg" /></a></li>
                                     <li><a href="#" class="notifications"><img src="img/notif.svg" /></a></li>
                                 </ul>
@@ -116,34 +115,36 @@
                         </div>
                     </nav>
                 </div>
+            </div>
+            <!-- END MAIN NAV BAR -->
 
-                <div id="app-drivers-section">
-                    <script id="drivers-list" type="text/x-handlebars-template">
-                        <ul class="collection">
-                            {{#each drivers}}
-                               <li class="collection-item avatar rider" onClick=>
-                                <img src="http://via.placeholder.com/50x50" data-name={{name}} data-karma={{karma}} alt="" class="circle user-image">
-                                <span class="title title-name">{{name}}</span>
-                                <br>
-                                <p class="title-name color-grey"> 
-                                    {{phone}}
-                                </p>
-                                <br>
-                                <p class="left more-info-driver color-grey">
-                                    <i class="tiny material-icons">location_on</i> {{distanceFromHome}}
-                                    
-                                    <i class="tiny material-icons">access_time</i> {{timeLeaving}}
-                                    <i class="tiny material-icons">group</i> {{seatsAvailable}}
-                                </p>
-                                <p class="secondary-content">Get a Ride</p>
-                               </li>
-                            {{/each}}
-                        </ul>
-                    </script>
-                </div>
+            <div id="app-drivers-section">
+                <script id="drivers-list" type="text/x-handlebars-template">
+                    <ul class="collection">
+                        {{#each drivers}}
+                           <li class="collection-item avatar rider" onClick=>
+                            <img src="http://via.placeholder.com/50x50" data-name={{name}} data-karma={{karma}} alt="" class="circle user-image">
+                            <span class="title title-name">{{name}}</span>
+                            <br>
+                            <p class="title-name color-grey"> 
+                                {{phone}}
+                            </p>
+                            <br>
+                            <p class="left more-info-driver color-grey">
+                                <i class="tiny material-icons">location_on</i> {{distanceFromHome}}
+                                
+                                <i class="tiny material-icons">access_time</i> {{timeLeaving}}
+                                <i class="tiny material-icons">group</i> {{seatsAvailable}}
+                            </p>
+                            <p class="secondary-content">Get a Ride</p>
+                           </li>
+                        {{/each}}
+                    </ul>
+                </script>
+            </div>
 
-                <div id="rider-information">
-                    <div class="card">
+            <div id="rider-information">
+                <div class="card">
                     <div class="card-image waves-effect waves-block waves-light">
                         <img class="activator" src="http://via.placeholder.com/100x50">
                     </div>
@@ -155,10 +156,38 @@
                         <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
                         <p>Here is some more information about this product that is only revealed once clicked on.</p>
                     </div>
-                    </div>
                 </div>
             </div>
-            <!-- END MAIN NAV BAR -->
+
+            <!-- LIST OF PEOPLE WHO WANT TO RIDE -->
+            <div id="app-riders-section">
+                <div class="navbar-fixed">
+                    <nav>
+                        <div class="nav-extended cyan lighten-1">
+                            <div class="nav-wrapper">
+                                <a href="#" class="brand-logo center">carp<span class="orange-text text-darken-3">ü</span>l</a>
+                                <ul class="left">
+                                    <!--<li><a href="#"><i class="material-icons left">person</i></a></li>-->
+                                    <li><a href="#" class="profile"><img src="img/profile.svg" /></a></li>
+                                    <li><a href="#" class="notifications"><img src="img/notif.svg" /></a></li>
+                                </ul>
+                                <ul class="right">
+                                    <li><a href="#" class="stats"><img src="img/stats.svg" /></a></li>
+                                    <li><a href="#" class="new-ride"><img src="img/new_drive.svg" /></a></li>
+                                </ul>
+                            </div>
+                            <div class="nav-content">
+                                <ul class="tabs tabs-transparent">
+                                    <li class="tab"><a href="#">Your Riders</a></li>
+                                    <li class="tab"><a href="#">Available Rides</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <p>LITTY</p>
+            </div>
+            <!-- END LIST OF PEOPLE WHO WANT TO RIDE -->
 
             <!-- NEW RIDE SCREEN -->
             <div id="new-ride">
