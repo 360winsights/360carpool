@@ -81,6 +81,7 @@ var util = {
 var app = {
     // Application Constructor
     initialize: function() {
+        var self = this
         $(document).ready(function () {
             // Initialize timepicker
             $('.timepicker').pickatime({
@@ -94,9 +95,6 @@ var app = {
                 ampmclickable: true, // make AM PM clickable
                 aftershow: function(){} //Function for after opening timepicker
             })
-
-            $('#top-nav').hide()
-            $('#new-ride').hide()
             
             var driver = null;
             var self = this;
@@ -114,6 +112,7 @@ var app = {
 
             $('.app-signup-button').on('click', function() {
                 $('#app-signup').hide()
+
                 $('#top-nav').show()
 
                 $('.nav-title').addClass('active')
@@ -133,7 +132,7 @@ var app = {
             })
 
             $('.new-ride').on('click', function () {
-                $('#top-nav').hide()
+                self.hideAll()
                 $('#new-ride').show()
             })
 
@@ -146,6 +145,19 @@ var app = {
             //     $('#app-drivers-section').hide();
             //     $('#rider-information').show();
             // })  
+
+            $('.create-ride').on('click', function () {
+                self.hideAll()
+                self.createRide()
+                $('#app-riders-section').show()
+            })
+
+            $('.cancel').on('click', function () {
+                self.hideAll()
+                $('#app-riders-section').show()
+            })
+
+            self.hideAll()
         })
         
         this.bindEvents();
@@ -176,5 +188,21 @@ var app = {
         // receivedElement.setAttribute('style', 'display:block;');
 
         // console.log('Received Event: ' + id);
+    },
+    hideAll: function () {
+        $('#top-nav').hide()
+        $('#new-ride').hide()
+        $('#app-riders-section').hide()
+    },
+    createRide: function () {
+        // Replace fallbacks with current user data
+        var dest = $('#destination-address').val() || '502 Green St, Whitby, ON L1N 4E5'
+        var time = $('#departure-time').val() ? $('#departure-time').val()
+                                                    .split(':')
+                                                    .map(function (val) { return parseInt(val, 10) })
+                                                    .reduce(function (acc, val) { return acc * 60 + val }, 0)
+                                              : 1025
+
+        // Create a ride
     }
 };
