@@ -113,6 +113,7 @@ var util = {
         $('#app-drivers-section').hide()
         $('#app-riders-section').hide()
         $('#rider-information').hide()
+        $('#user-profile').hide()
         $('#stats').hide()
     },
     applyNavbarProfile: function (profile) {
@@ -141,6 +142,14 @@ var util = {
             $('#left-action').empty()
             $('#right-action').empty()
             $('#left-action').append('<li><a class="cancel">BACK</a></li>')
+        } else if (profile === 'profile') {
+            $('#main-nav').hide()
+            $('#simple-nav').show()
+            $('#nav-title').text('Profile')
+            $('#left-action').empty()
+            $('#right-action').empty()
+            $('#left-action').append('<li><a class="save-profile">SAVE</a></li>')
+            $('#right-action').append('<li><a class="cancel">CANCEL</a></li>')
         } else if (profile === 'stats') {
             $('#main-nav').hide()
             $('#simple-nav').show()
@@ -186,7 +195,8 @@ var util = {
                                               : 1025
 
         // Create a ride
-    }
+    },
+    saveProfile: function () {}
 }
 
 var app = {
@@ -224,6 +234,12 @@ var app = {
                 util.mainScreen()
             })
 
+            $('.profile').on('click', function () {
+                util.hideAll()
+                util.applyNavbarProfile('profile')
+                $('#user-profile').show()
+            })
+
             $('.new-ride').on('click', function () {
                 util.hideAll()
                 util.applyNavbarProfile('new-ride')
@@ -245,6 +261,12 @@ var app = {
             $(document).on('click', '.create-ride', function () {
                 util.hideAll()
                 util.createRide()
+                util.mainScreen()
+            })
+
+            $(document).on('click', '.save-profile', function() {
+                util.hideAll()
+                util.saveProfile()
                 util.mainScreen()
             })
 
