@@ -109,12 +109,53 @@
                             </div>
                             <div class="nav-content">
                                 <ul class="tabs tabs-transparent">
-                                    <li class="tab"><a href="#">Your Riders</a></li>
-                                    <li class="tab"><a href="#">Available Rides</a></li>
+                                    <li class="tab"><a href="#" class="nav-title">Your Riders</a></li>
+                                    <!-- <li class="tab"><a href="#" class="riders-nav">Available Rides</a></li> -->
                                 </ul>
                             </div>
                         </div>
                     </nav>
+                </div>
+
+                <div id="app-drivers-section">
+                    <script id="drivers-list" type="text/x-handlebars-template">
+                        <ul class="collection">
+                            {{#each drivers}}
+                               <li class="collection-item avatar rider" onClick=>
+                                <img src="http://via.placeholder.com/50x50" data-name={{name}} data-karma={{karma}} alt="" class="circle user-image">
+                                <span class="title title-name">{{name}}</span>
+                                <br>
+                                <p class="title-name color-grey"> 
+                                    {{phone}}
+                                </p>
+                                <br>
+                                <p class="left more-info-driver color-grey">
+                                    <i class="tiny material-icons">location_on</i> {{distanceFromHome}}
+                                    
+                                    <i class="tiny material-icons">access_time</i> {{timeLeaving}}
+                                    <i class="tiny material-icons">group</i> {{seatsAvailable}}
+                                </p>
+                                <p class="secondary-content">Get a Ride</p>
+                               </li>
+                            {{/each}}
+                        </ul>
+                    </script>
+                </div>
+
+                <div id="rider-information">
+                    <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="http://via.placeholder.com/100x50">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+                        <p><a href="#">This is a link</a></p>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                    </div>
+                    </div>
                 </div>
             </div>
             <!-- END MAIN NAV BAR -->
@@ -174,6 +215,7 @@
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
         app.initialize();
