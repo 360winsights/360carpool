@@ -102,9 +102,6 @@ var util = {
             return false;
         }
     },
-    getListItemTemplate: function (data) {
-        var template = '<utl '
-    },
     hideAll: function () {
         $('#main-nav').hide()
         $('#simple-nav').hide()
@@ -255,7 +252,7 @@ var app = {
                 $('#stats').show()
             })
 
-            $(document).on('click', '.rider', function() {
+            $(document).on('click', '.rider img', function() {
                 util.hideAll()
                 util.applyNavbarProfile('rider-profile')
                 $('#rider-information').show()
