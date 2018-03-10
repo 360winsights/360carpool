@@ -53,7 +53,6 @@ var state = {
     riders: [
 
         {
-            id: 1,
             name: 'Booby Tarantino',
             phone: '6471234567',
             distanceFromHome: 1,
@@ -61,7 +60,6 @@ var state = {
             karma: 2
         },
         {
-            id: 2,
             name: 'John Doe',
             phone: '6471234567',
             distanceFromHome: 1,
@@ -69,7 +67,6 @@ var state = {
             karma: 2
         },
         {
-            id: 3,
             name: 'Steve Arnott',
             phone: '4161234567',
             distanceFromHome: 2,
@@ -77,7 +74,6 @@ var state = {
             karma: -1
         },
         {
-            id: 4,
             name: 'Lindsay Bluth',
             phone: '5141234567',
             distanceFromHome: 2,
@@ -326,6 +322,21 @@ var app = {
                 state.riders.push(remRider)
                 util.hideAll()
                 util.rideStatus()
+            })
+
+            $(document).on('click', '.get-ride', function () {
+                const i = util.findWithAttr(state.drivers, 'name', $(this).parent().children('span.title-name').text())
+                state.drivers.splice(i, 1)
+                var rider = {
+                    name: state.profile.fullName,
+                    phone: '6471234567',
+                    distanceFromHome: 2, // API call
+                    timeLeaving: '18:00', // API call
+                    karma: 2 // API call
+                }
+                state.riders.push(rider)
+                util.hideAll()
+                util.mainScreen()
             })
 
             $(document).on('click', '.riders', function () {
