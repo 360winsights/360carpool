@@ -48,17 +48,46 @@ var util = {
             ]
         }
 
-        return data;
-    },  
+        return data
+    },
+    getDummyRiderData: function () {
+        var data = {
+            riders: [
+                {
+                    name: 'John Doe',
+                    phone: '6471234567',
+                    distanceFromHome: 1,
+                    timeLeaving: '18:00',
+                    karma: 2
+                },
+                {
+                    name: 'Steve Arnott',
+                    phone: '4161234567',
+                    distanceFromHome: 2,
+                    timeLeaving: '18:00',
+                    karma: -1
+                },
+                {
+                    name: 'Lindsay Bluth',
+                    phone: '5141234567',
+                    distanceFromHome: 2,
+                    timeLeaving: '18:30',
+                    karma: 100
+                }
+            ]
+        }
+
+        return data
+    },
     isDriver: function (userType) {
         //TODO: Add ajax call
         if (this.checkLocalStorage('localStorage')) {
             window.localStorage.setItem('driver', userType)
         }
     },
-    getUserType: function() {
+    userIsDriver: function() {
         if (this.checkLocalStorage('localStorage')) {
-            return window.localStorage.getItem('driver')
+            return window.localStorage.getItem('driver') === 'true'
         }
     },
     checkLocalStorage: function (type) {
@@ -77,12 +106,53 @@ var util = {
         var template = '<utl '
     },
     hideAll: function () {
+        $('#main-nav').hide()
+        $('#simple-nav').hide()
         $('#app-signup').hide()
-        $('#top-nav').hide()
         $('#new-ride').hide()
         $('#app-drivers-section').hide()
         $('#app-riders-section').hide()
         $('#rider-information').hide()
+    },
+    applyNavbarProfile: function (profile) {
+        if (profile === 'driver') {
+            $('#main-nav').show()
+            $('#simple-nav').hide()
+            $('#nav-tabs').empty()
+            $('#nav-tabs').append('<li class="tab"><a>Riders</a></li>')
+        } else if (profile === 'rider') {
+            $('#main-nav').show()
+            $('#simple-nav').hide()
+            $('#nav-tabs').empty()
+            $('#nav-tabs').append('<li class="tab"><a>Drivers</a></li>')
+        } else if (profile === 'new-ride') {
+            $('#main-nav').hide()
+            $('#simple-nav').show()
+        } else {
+        }
+    },
+    mainScreen: function () {
+        if (util.userIsDriver()) {
+            util.applyNavbarProfile('driver')
+            $('#app-riders-section').show()
+            var data = util.getDummyRiderData()
+            if (data) {
+                $('#app-riders-section').children('ul').remove()
+                var source = $('#riders-list').html()
+                var template = Handlebars.compile(source)
+                $('#app-riders-section').append(template(data))
+            }
+        } else {
+            util.applyNavbarProfile('rider')
+            $('#app-drivers-section').show()
+            var data = util.getDummyDriverData()
+            if (data) {
+                $('#app-drivers-section').children('ul').remove()
+                var source = $('#drivers-list').html()
+                var template = Handlebars.compile(source)
+                $('#app-drivers-section').append(template(data))
+            }
+        }
     },
     createRide: function () {
         // Replace fallbacks with current user data
@@ -100,7 +170,6 @@ var util = {
 var app = {
     // Application Constructor
     initialize: function() {
-        var self = this
         $(document).ready(function () {
             // Initialize timepicker
             $('.timepicker').pickatime({
@@ -130,26 +199,12 @@ var app = {
 
             $('.app-signup-button').on('click', function() {
                 util.hideAll()
-
-                $('#top-nav').show()
-
-                $('.nav-title').addClass('active')
-                
-                if (util.getUserType()) {
-                    $('.nav-title').html('Riders')
-                    $('#app-drivers-section').show();
-                    var data = util.getDummyDriverData();
-                    if (data) {
-                        var source = $('#drivers-list').html();
-                        var template = Handlebars.compile(source);
-                        $('#app-drivers-section').append(template(data))
-                        
-                    }
-                } 
+                util.mainScreen()
             })
 
             $('.new-ride').on('click', function () {
                 util.hideAll()
+                util.applyNavbarProfile('new-ride')
                 $('#new-ride').show()
             })
 
@@ -161,12 +216,12 @@ var app = {
             $('.create-ride').on('click', function () {
                 util.hideAll()
                 util.createRide()
-                $('#app-riders-section').show()
+                util.mainScreen()
             })
 
             $('.cancel').on('click', function () {
                 util.hideAll()
-                $('#app-riders-section').show()
+                util.mainScreen()
             })
 
             util.hideAll()
