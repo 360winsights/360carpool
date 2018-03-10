@@ -33,8 +33,6 @@ var app = {
                 ampmclickable: true, // make AM PM clickable
                 aftershow: function(){} //Function for after opening timepicker
             })
-
-            self.hideAll()
             
             $('#driver-toggle').change(function(){
                 if ($('#driver-toggle').prop('checked') === true) {
@@ -66,6 +64,8 @@ var app = {
                 self.hideAll()
                 $('#app-riders-section').show()
             })
+
+            self.hideAll()
         })
         
         this.bindEvents();
