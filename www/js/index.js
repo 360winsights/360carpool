@@ -24,89 +24,72 @@ var state = {
         isDriver: false,
         seatsInCar: 1
     },
-    drivers: [],
-    riders: [],
+    drivers: [
+        {
+            name: 'Jean-Guy LaPatate',
+            phone: '8191234567',
+            distanceFromHome: 1,
+            timeLeaving: '18:00',
+            seatsAvailable: 2,
+            karma: 2
+        },
+        {
+            name: 'Bob Vachon',
+            phone: '4161234567',
+            distanceFromHome: 2,
+            timeLeaving: '18:00',
+            seatsAvailable: 1,
+            karma: -1
+        },
+        {
+            name: 'Amanda Hugankis',
+            phone: '5141234567',
+            distanceFromHome: 2,
+            timeLeaving: '18:30',
+            seatsAvailable: 3,
+            karma: 100
+        }
+    ],
+    riders: [
+
+        {
+            id: 1,
+            name: 'Booby Tarantino',
+            phone: '6471234567',
+            distanceFromHome: 1,
+            timeLeaving: '18:00',
+            karma: 2
+        },
+        {
+            id: 2,
+            name: 'John Doe',
+            phone: '6471234567',
+            distanceFromHome: 1,
+            timeLeaving: '18:00',
+            karma: 2
+        },
+        {
+            id: 3,
+            name: 'Steve Arnott',
+            phone: '4161234567',
+            distanceFromHome: 2,
+            timeLeaving: '18:00',
+            karma: -1
+        },
+        {
+            id: 4,
+            name: 'Lindsay Bluth',
+            phone: '5141234567',
+            distanceFromHome: 2,
+            timeLeaving: '18:30',
+            karma: 100
+        }
+    ],
     acceptedRiders: [],
     rideCreated: false
 }
 
 var util = {
-    getDummyDriverData: function () {
-        var data = {
-            drivers: [
-                {
-                    name: 'John Doe',
-                    phone: '6471234567',
-                    distanceFromHome: 1,
-                    timeLeaving: '18:00',
-                    seatsAvailable: 2,
-                    karma: 2
-                },
-                {
-                    name: 'Steve Arnott',
-                    phone: '4161234567',
-                    distanceFromHome: 2,
-                    timeLeaving: '18:00',
-                    seatsAvailable: 1,
-                    karma: -1
-                },
-                {
-                    name: 'Lindsay Bluth',
-                    phone: '5141234567',
-                    distanceFromHome: 2,
-                    timeLeaving: '18:30',
-                    seatsAvailable: 3,
-                    karma: 100
-                }
-            ]
-        }
-
-        return data
-    },
-    getDummyRiderData: function () {
-        var data = {
-            riders: [
-                {
-                    name: 'John Doe',
-                    phone: '6471234567',
-                    distanceFromHome: 1,
-                    timeLeaving: '18:00',
-                    karma: 2
-                },
-                {
-                    name: 'Steve Arnott',
-                    phone: '4161234567',
-                    distanceFromHome: 2,
-                    timeLeaving: '18:00',
-                    karma: -1
-                },
-                {
-                    name: 'Lindsay Bluth',
-                    phone: '5141234567',
-                    distanceFromHome: 2,
-                    timeLeaving: '18:30',
-                    karma: 100
-                }
-            ]
-        }
-
-        return data
-    },
-    getDummyAcceptedRiderData: function () {
-        var data = {
-            riders: [
-                {
-                    name: 'Booby Tarantino',
-                    phone: '6471234567',
-                    distanceFromHome: 1,
-                    timeLeaving: '18:00',
-                    karma: 2
-                }
-            ]
-        }
-
-        return data
-    },
     userIsDriver: function() {
         // if (this.checkLocalStorage('localStorage')) {
         //     return window.localStorage.getItem('driver') === 'true'
@@ -199,7 +182,7 @@ var util = {
             } else {
                 $('#no-ride-created').show()
             }
-            var data = util.getDummyRiderData()
+            var data = { riders: state.riders }
             if (data) {
                 $('#app-riders-section').children('ul').remove()
                 var source = $('#riders-list').html()
@@ -209,7 +192,7 @@ var util = {
         } else {
             util.applyNavbarProfile('rider')
             $('#app-drivers-section').show()
-            var data = util.getDummyDriverData()
+            var data = { drivers: state.drivers }
             if (data) {
                 $('#app-drivers-section').children('ul').remove()
                 var source = $('#drivers-list').html()
@@ -218,17 +201,20 @@ var util = {
             }
         }
     },
+    rideStatus: function () {
+        util.applyNavbarProfile('driver')
+        $('.ride-status').addClass('active')
+        $('#ride-status').show()
+        var data = { acceptedRiders: state.acceptedRiders }
+        if (data) {
+            $('#ride-status').children('ul').remove()
+            var source = $('#accepted-riders-list').html()
+            var template = Handlebars.compile(source)
+            $('#ride-status').append(template(data))
+        }
+    },
     createRide: function () {
-        // Replace fallbacks with current user data
-        var dest = $('#destination-address').val() || '502 Green St, Whitby, ON L1N 4E5'
-        var time = $('#departure-time').val() ? $('#departure-time').val()
-                                                    .split(':')
-                                                    .map(function (val) { return parseInt(val, 10) })
-                                                    .reduce(function (acc, val) { return acc * 60 + val }, 0)
-                                              : 1025
-
         state.rideCreated = true
-        // Create a ride
     },
     saveInitialProfile: function () {
         state.profile.fullName = $('#name').val()
@@ -241,6 +227,13 @@ var util = {
         state.profile.homeAddress = $('#profile-address').val()
         state.profile.isDriver = $('#profile-driver-toggle').prop('checked')
         state.profile.seatsInCar = parseInt($('#profile-app-number-rides').find(":selected").val(), 10)
+    },
+    findWithAttr: function (array, attr, value) {
+        for(var i = 0; i < array.length; i += 1) {
+            if(array[i][attr] === value) {
+                return i;
+            }
+        }
     }
 }
 
@@ -313,31 +306,37 @@ var app = {
                 $('#stats').show()
             })
 
-            $(document).on('click', '.rider img', function() {
+            $(document).on('click', '.user-image', function() {
                 util.hideAll()
                 util.applyNavbarProfile('rider-profile')
                 $('#rider-information').show()
             })
 
+            $(document).on('click', '.accept-rider', function() {
+                const i = util.findWithAttr(state.riders, 'name', $(this).parent().children('span.title-name').text())
+                const [ accRider ] = state.riders.splice(i, 1)
+                state.acceptedRiders.push(accRider)
+                util.hideAll()
+                util.mainScreen()
+            })
+
+            $(document).on('click', '.remove-rider', function() {
+                const i = util.findWithAttr(state.acceptedRiders, 'name', $(this).parent().children('span.title-name').text())
+                const [ remRider ] = state.acceptedRiders.splice(i, 1)
+                state.riders.push(remRider)
+                util.hideAll()
+                util.rideStatus()
+            })
+
             $(document).on('click', '.riders', function () {
                 util.hideAll()
-                util.applyNavbarProfile('driver')
                 util.mainScreen()
                 $('.riders').addClass('active')
             })
 
             $(document).on('click', '.ride-status', function () {
                 util.hideAll()
-                util.applyNavbarProfile('driver')
-                $('#ride-status').show()
-                $('.ride-status').addClass('active')
-                var data = util.getDummyAcceptedRiderData()
-                if (data) {
-                    $('#ride-status').children('ul').remove()
-                    var source = $('#accepted-riders-list').html()
-                    var template = Handlebars.compile(source)
-                    $('#ride-status').append(template(data))
-                }
+                util.rideStatus()
             })
 
             $(document).on('click', '.create-ride', function () {

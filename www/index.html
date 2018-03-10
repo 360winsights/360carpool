@@ -151,7 +151,7 @@
                                     <i class="tiny material-icons">location_on</i> {{distanceFromHome}}
                                     <i class="tiny material-icons">access_time</i> {{timeLeaving}}
                                 </p>
-                                <p class="secondary-content">ACCEPT RIDER</p>
+                                <a id={{id}} class="secondary-content accept-rider">ACCEPT RIDER</a>
                            </li>
                         {{/each}}
                     </ul>
@@ -195,7 +195,7 @@
                                     <i class="tiny material-icons">access_time</i> {{timeLeaving}}
                                     <i class="tiny material-icons">group</i> {{seatsAvailable}}
                                 </p>
-                                <p class="secondary-content">GET A RIDE</p>
+                                <a class="secondary-content get-ride">GET A RIDE</a>
                            </li>
                         {{/each}}
                     </ul>
@@ -244,7 +244,7 @@
             <div id="ride-status">
                 <script id="accepted-riders-list" type="text/x-handlebars-template">
                     <ul class="collection">
-                        {{#each riders}}
+                        {{#each acceptedRiders}}
                             <li class="collection-item avatar rider">
                                 <img src="http://via.placeholder.com/50x50" data-name={{name}} data-karma={{karma}} alt="" class="circle user-image">
                                 <span class="title title-name">{{name}}</span>
@@ -257,7 +257,7 @@
                                     <i class="tiny material-icons">location_on</i> {{distanceFromHome}}
                                     <i class="tiny material-icons">access_time</i> {{timeLeaving}}
                                 </p>
-                                <p class="secondary-content">REMOVE RIDER</p>
+                                <a class="secondary-content remove-rider">REMOVE RIDER</a>
                            </li>
                         {{/each}}
                     </ul>
