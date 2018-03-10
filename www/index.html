@@ -90,59 +90,75 @@
             </div>
             <!--Sign Up Ends-->
 
-            <!-- MAIN NAV BAR -->
-            <div id="top-nav">
+            <!-- NAVBAR -->
+            <div id="main-nav">
                 <div class="navbar-fixed">
                     <nav>
-                        <div class="nav-extended cyan lighten-1">
-                            <div class="nav-wrapper">
-                                <a href="#" class="brand-logo center">carp<span class="orange-text text-darken-3">ü</span>l</a>
-                                <ul class="left">
-                                    <li><a href="#" class="profile"><img src="img/profile.svg" /></a></li>
-                                    <li><a href="#" class="notifications"><img src="img/notif.svg" /></a></li>
-                                </ul>
-                                <ul class="right">
-                                    <li><a href="#" class="stats"><img src="img/stats.svg" /></a></li>
-                                    <li><a href="#" class="new-ride"><img src="img/new_drive.svg" /></a></li>
-                                </ul>
-                            </div>
-                            <div class="nav-content">
-                                <ul class="tabs tabs-transparent">
-                                    <li class="tab"><a href="#" class="nav-title">Your Riders</a></li>
-                                    <!-- <li class="tab"><a href="#" class="riders-nav">Available Rides</a></li> -->
-                                </ul>
+                        <div id="extended-nav">
+                            <div class="nav-extended cyan lighten-1">
+                                <div class="nav-wrapper">
+                                    <a href="#" class="brand-logo center">carp<span class="orange-text text-darken-3">ü</span>l</a>
+                                    <ul class="left">
+                                        <li><a href="#" class="profile"><img src="img/profile.svg" /></a></li>
+                                        <li><a href="#" class="notifications"><img src="img/notif.svg" /></a></li>
+                                    </ul>
+                                    <ul class="right">
+                                        <li><a href="#" class="stats"><img src="img/stats.svg" /></a></li>
+                                        <li><a href="#" class="new-ride"><img src="img/new_drive.svg" /></a></li>
+                                    </ul>
+                                </div>
+                                <div class="nav-content">
+                                    <ul id="nav-tabs" class="tabs tabs-transparent"></ul>
+                                </div>
                             </div>
                         </div>
                     </nav>
                 </div>
             </div>
-            <!-- END MAIN NAV BAR -->
 
-            <div id="app-drivers-section">
-                <script id="drivers-list" type="text/x-handlebars-template">
+            <div id="simple-nav">
+                <div class="navbar-fixed">
+                    <nav>
+                        <div class="nav-wrapper cyan lighten-1">
+                            <a href="#" class="title center">New Ride</a>
+                            <ul class="left">
+                                <li><a class="create-ride">CREATE</a></li>
+                            </ul>
+                            <ul class="right">
+                                <li><a class="cancel">CANCEL</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <!-- END NAVBAR -->
+
+            <!-- LIST OF PEOPLE WHO WANT TO RIDE -->
+            <div id="app-riders-section">
+                <script id="riders-list" type="text/x-handlebars-template">
                     <ul class="collection">
-                        {{#each drivers}}
-                           <li class="collection-item avatar rider" onClick=>
-                            <img src="http://via.placeholder.com/50x50" data-name={{name}} data-karma={{karma}} alt="" class="circle user-image">
-                            <span class="title title-name">{{name}}</span>
-                            <br>
-                            <p class="title-name color-grey"> 
-                                {{phone}}
-                            </p>
-                            <br>
-                            <p class="left more-info-driver color-grey">
-                                <i class="tiny material-icons">location_on</i> {{distanceFromHome}}
-                                
-                                <i class="tiny material-icons">access_time</i> {{timeLeaving}}
-                                <i class="tiny material-icons">group</i> {{seatsAvailable}}
-                            </p>
-                            <p class="secondary-content">Get a Ride</p>
+                        {{#each riders}}
+                            <li class="collection-item avatar rider">
+                                <img src="http://via.placeholder.com/50x50" data-name={{name}} data-karma={{karma}} alt="" class="circle user-image">
+                                <span class="title title-name">{{name}}</span>
+                                <br>
+                                <p class="title-name color-grey"> 
+                                    {{phone}}
+                                </p>
+                                <br>
+                                <p class="left more-info-driver color-grey">
+                                    <i class="tiny material-icons">location_on</i> {{distanceFromHome}}
+                                    <i class="tiny material-icons">access_time</i> {{timeLeaving}}
+                                </p>
+                                <p class="secondary-content">Accept Rider</p>
                            </li>
                         {{/each}}
                     </ul>
                 </script>
             </div>
+            <!-- END LIST OF PEOPLE WHO WANT TO RIDE -->
 
+            <!-- RIDER PROFILE PAGE -->
             <div id="rider-information">
                 <div class="card">
                     <div class="card-image waves-effect waves-block waves-light">
@@ -158,52 +174,36 @@
                     </div>
                 </div>
             </div>
+            <!-- END RIDER PROFILE PAGE -->
 
-            <!-- LIST OF PEOPLE WHO WANT TO RIDE -->
-            <div id="app-riders-section">
-                <div class="navbar-fixed">
-                    <nav>
-                        <div class="nav-extended cyan lighten-1">
-                            <div class="nav-wrapper">
-                                <a href="#" class="brand-logo center">carp<span class="orange-text text-darken-3">ü</span>l</a>
-                                <ul class="left">
-                                    <!--<li><a href="#"><i class="material-icons left">person</i></a></li>-->
-                                    <li><a href="#" class="profile"><img src="img/profile.svg" /></a></li>
-                                    <li><a href="#" class="notifications"><img src="img/notif.svg" /></a></li>
-                                </ul>
-                                <ul class="right">
-                                    <li><a href="#" class="stats"><img src="img/stats.svg" /></a></li>
-                                    <li><a href="#" class="new-ride"><img src="img/new_drive.svg" /></a></li>
-                                </ul>
-                            </div>
-                            <div class="nav-content">
-                                <ul class="tabs tabs-transparent">
-                                    <li class="tab"><a href="#">Your Riders</a></li>
-                                    <li class="tab"><a href="#">Available Rides</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-                <p>LITTY</p>
+            <!-- LIST OF PEOPLE DRIVING -->
+            <div id="app-drivers-section">
+                <script id="drivers-list" type="text/x-handlebars-template">
+                    <ul class="collection">
+                        {{#each drivers}}
+                            <li class="collection-item avatar rider">
+                                <img src="http://via.placeholder.com/50x50" data-name={{name}} data-karma={{karma}} alt="" class="circle user-image">
+                                <span class="title title-name">{{name}}</span>
+                                <br>
+                                <p class="title-name color-grey"> 
+                                    {{phone}}
+                                </p>
+                                <br>
+                                <p class="left more-info-driver color-grey">
+                                    <i class="tiny material-icons">location_on</i> {{distanceFromHome}}
+                                    <i class="tiny material-icons">access_time</i> {{timeLeaving}}
+                                    <i class="tiny material-icons">group</i> {{seatsAvailable}}
+                                </p>
+                                <p class="secondary-content">Get a Ride</p>
+                           </li>
+                        {{/each}}
+                    </ul>
+                </script>
             </div>
-            <!-- END LIST OF PEOPLE WHO WANT TO RIDE -->
+            <!-- END LIST OF PEOPLE DRIVING -->
 
             <!-- NEW RIDE SCREEN -->
             <div id="new-ride">
-                <div class="navbar-fixed">
-                    <nav>
-                        <div class="nav-wrapper cyan lighten-1">
-                            <a href="#" class="title center">New Ride</a>
-                            <ul class="left">
-                                <li><a class="create-ride">CREATE</a></li>
-                            </ul>
-                            <ul class="right">
-                                <li><a class="cancel">CANCEL</a></li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
                 <div class="container">
                     <div class="row">
                         <form class="col s12">
