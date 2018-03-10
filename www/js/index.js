@@ -107,7 +107,7 @@ var app = {
         var time = $('#departure-time').val() ? $('#departure-time').val()
                                                     .split(':')
                                                     .map(function (val) { return parseInt(val, 10) })
-                                                    .reduce(function (acc, val) { return acc * 60 + val })
+                                                    .reduce(function (acc, val) { return acc * 60 + val }, 0)
                                               : 1025
 
         // Create a ride
