@@ -73,6 +73,11 @@ body {
     clear: both;
 }
 
+#ride-status, #accepted-rider-information {
+    margin-top: 50px;
+    clear: both;
+}
+
 .title-name {
     float: left;
 }

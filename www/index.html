@@ -240,6 +240,31 @@
             </div>
             <!-- END NEW RIDE SCREEN -->
 
+            <!-- RIDE STATUS SCREEN -->
+            <div id="ride-status">
+                <script id="accepted-riders-list" type="text/x-handlebars-template">
+                    <ul class="collection">
+                        {{#each riders}}
+                            <li class="collection-item avatar rider">
+                                <img src="http://via.placeholder.com/50x50" data-name={{name}} data-karma={{karma}} alt="" class="circle user-image">
+                                <span class="title title-name">{{name}}</span>
+                                <br>
+                                <p class="title-name color-grey"> 
+                                    {{phone}}
+                                </p>
+                                <br>
+                                <p class="left more-info-driver color-grey">
+                                    <i class="tiny material-icons">location_on</i> {{distanceFromHome}}
+                                    <i class="tiny material-icons">access_time</i> {{timeLeaving}}
+                                </p>
+                                <p class="secondary-content">REMOVE RIDER</p>
+                           </li>
+                        {{/each}}
+                    </ul>
+                </script>
+            </div>
+            <!-- END RIDE STATUS SCREEN -->
+
             <!-- USER PROFILE SCREEN -->
             <div id="user-profile">
                 <div class="row">

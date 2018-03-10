@@ -91,6 +91,21 @@ var util = {
 
         return data
     },
+    getDummyAcceptedRiderData: function () {
+        var data = {
+            riders: [
+                {
+                    name: 'Booby Tarantino',
+                    phone: '6471234567',
+                    distanceFromHome: 1,
+                    timeLeaving: '18:00',
+                    karma: 2
+                }
+            ]
+        }
+
+        return data
+    },
     userIsDriver: function() {
         // if (this.checkLocalStorage('localStorage')) {
         //     return window.localStorage.getItem('driver') === 'true'
@@ -118,6 +133,7 @@ var util = {
         $('#new-ride').hide()
         $('#app-drivers-section').hide()
         $('#app-riders-section').hide()
+        $('#ride-status').hide()
         $('#rider-information').hide()
         $('#user-profile').hide()
         $('#stats').hide()
@@ -127,7 +143,8 @@ var util = {
             $('#main-nav').show()
             $('#simple-nav').hide()
             $('#nav-tabs').empty()
-            $('#nav-tabs').append('<li class="tab"><a>Riders</a></li>')
+            $('#nav-tabs').append('<li class="tab riders"><a>Riders</a></li>')
+            $('#nav-tabs').append('<li class="tab ride-status"><a>Ride Status</a></li>')
         } else if (profile === 'rider') {
             $('#main-nav').show()
             $('#simple-nav').hide()
@@ -289,6 +306,27 @@ var app = {
                 util.hideAll()
                 util.applyNavbarProfile('rider-profile')
                 $('#rider-information').show()
+            })
+
+            $(document).on('click', '.riders', function () {
+                util.hideAll()
+                util.applyNavbarProfile('driver')
+                util.mainScreen()
+                $('.riders').addClass('active')
+            })
+
+            $(document).on('click', '.ride-status', function () {
+                util.hideAll()
+                util.applyNavbarProfile('driver')
+                $('#ride-status').show()
+                $('.ride-status').addClass('active')
+                var data = util.getDummyAcceptedRiderData()
+                if (data) {
+                    $('#ride-status').children('ul').remove()
+                    var source = $('#accepted-riders-list').html()
+                    var template = Handlebars.compile(source)
+                    $('#ride-status').append(template(data))
+                }
             })
 
             $(document).on('click', '.create-ride', function () {
