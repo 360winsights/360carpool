@@ -63,15 +63,12 @@ body {
     font-size: 16px !important;
 }
 
-.app-number-rides-question {
-    display: none;
+#app-riders-section, #rider-information {
+    margin-top: 50px;
+    clear: both;
 }
 
-#app-drivers-section {
-    display: none;
-}
-
-#app-drivers-section, #rider-information {
+#app-drivers-section, #driver-information {
     margin-top: 50px;
     clear: both;
 }
@@ -95,10 +92,6 @@ h1 {
     overflow:visible;
     padding:0px;
     text-align:center;
-}
-
-#rider-information {
-    display: none;
 }
 
 @keyframes fade {
