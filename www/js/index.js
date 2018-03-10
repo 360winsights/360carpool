@@ -23,7 +23,9 @@ var state = {
         homeAddress: '',
         isDriver: false,
         seatsInCar: 1
-    }
+    },
+    drivers: [],
+    riders: []
 }
 
 var util = {
