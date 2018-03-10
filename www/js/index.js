@@ -17,6 +17,15 @@
  * under the License.
  */
 
+var state = {
+    profile: {
+        fullName: '',
+        homeAddress: '',
+        isDriver: false,
+        seatsInCar: 1
+    }
+}
+
 var util = {
     getDummyDriverData: function () {
         var data = {
@@ -79,17 +88,13 @@ var util = {
 
         return data
     },
-    isDriver: function (userType) {
-        //TODO: Add ajax call
-        if (this.checkLocalStorage('localStorage')) {
-            window.localStorage.setItem('driver', userType)
-        }
-    },
     userIsDriver: function() {
-        if (this.checkLocalStorage('localStorage')) {
-            return window.localStorage.getItem('driver') === 'true'
-        }
+        // if (this.checkLocalStorage('localStorage')) {
+        //     return window.localStorage.getItem('driver') === 'true'
+        // }
+        return state.profile.isDriver
     },
+    /*
     checkLocalStorage: function (type) {
         try {
             var storage = window[type],
@@ -102,6 +107,7 @@ var util = {
             return false;
         }
     },
+    */
     hideAll: function () {
         $('#main-nav').hide()
         $('#simple-nav').hide()
@@ -193,7 +199,18 @@ var util = {
 
         // Create a ride
     },
-    saveProfile: function () {}
+    saveInitialProfile: function () {
+        state.profile.fullName = $('#name').val()
+        state.profile.homeAddress = $('#address').val()
+        state.profile.isDriver = $('#driver-toggle').prop('checked')
+        state.profile.seatsInCar = parseInt($('#app-number-rides').find(":selected").val(), 10)
+    },
+    saveProfile: function () {
+        state.profile.fullName = $('#profile-name').val()
+        state.profile.homeAddress = $('#profile-address').val()
+        state.profile.isDriver = $('#profile-driver-toggle').prop('checked')
+        state.profile.seatsInCar = parseInt($('#profile-app-number-rides').find(":selected").val(), 10)
+    }
 }
 
 var app = {
@@ -213,7 +230,7 @@ var app = {
                 aftershow: function(){} //Function for after opening timepicker
             })
             
-            var driver = null;
+            var driver = null
             $('#driver-toggle').change(function(){
                 if ($('#driver-toggle').prop('checked') === true) {
                     $('.app-number-rides-question').show()
@@ -223,13 +240,18 @@ var app = {
                     $('#app-number-rides').material_select('destroy')
                 }
             })
+            $('#profile-driver-toggle').change(function(){
+                if ($('#profile-driver-toggle').prop('checked')) {
+                    $('.app-number-rides-question').show()
+                    $('#profile-app-number-rides').material_select()
+                } else {
+                    $('.app-number-rides-question').hide()
+                    $('#profile-app-number-rides').material_select('destroy')
+                }
+            })
 
             $('.app-signup-button').on('click', function() {
-                if ($('#driver-toggle').prop('checked') === true) {
-                    util.isDriver(true)
-                } else {
-                    util.isDriver(false)
-                }
+                util.saveInitialProfile()
                 util.hideAll()
                 util.mainScreen()
             })
@@ -238,6 +260,9 @@ var app = {
                 util.hideAll()
                 util.applyNavbarProfile('profile')
                 $('#user-profile').show()
+                $('#profile-name').val(state.profile.fullName)
+                $('#profile-address').val(state.profile.homeAddress)
+                $('#profile-driver-toggle').prop('checked', state.profile.isDriver)
             })
 
             $('.new-ride').on('click', function () {
@@ -265,8 +290,8 @@ var app = {
             })
 
             $(document).on('click', '.save-profile', function() {
-                util.hideAll()
                 util.saveProfile()
+                util.hideAll()
                 util.mainScreen()
             })
 
