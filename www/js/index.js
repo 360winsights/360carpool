@@ -58,6 +58,7 @@ var app = {
 
             $('.create-ride').on('click', function () {
                 self.hideAll()
+                self.createRide()
                 $('#app-riders-section').show()
             })
 
@@ -99,5 +100,16 @@ var app = {
         $('#top-nav').hide()
         $('#new-ride').hide()
         $('#app-riders-section').hide()
+    },
+    createRide: function () {
+        // Replace fallbacks with current user data
+        var dest = $('#destination-address').val() || '502 Green St, Whitby, ON L1N 4E5'
+        var time = $('#departure-time').val() ? $('#departure-time').val()
+                                                    .split(':')
+                                                    .map(function (val) { return parseInt(val, 10) })
+                                                    .reduce(function (acc, val) { return acc * 60 + val })
+                                              : 1025
+
+        // Create a ride
     }
 };
