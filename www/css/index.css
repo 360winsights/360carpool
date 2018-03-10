@@ -139,3 +139,7 @@ nav .title.center {
     font-size: 1.15rem;
     font-weight: bold;
 }
+
+#signin {
+    margin-top: -5rem;
+}

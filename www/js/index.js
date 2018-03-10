@@ -21,6 +21,7 @@ var state = {
     profile: {
         fullName: '',
         homeAddress: '',
+        phoneNumber: '',
         isDriver: false,
         seatsInCar: 1
     },
@@ -215,12 +216,14 @@ var util = {
     saveInitialProfile: function () {
         state.profile.fullName = $('#name').val()
         state.profile.homeAddress = $('#address').val()
+        state.profile.phoneNumber = $('#phone').val()
         state.profile.isDriver = $('#driver-toggle').prop('checked')
         state.profile.seatsInCar = parseInt($('#app-number-rides').find(":selected").val(), 10)
     },
     saveProfile: function () {
         state.profile.fullName = $('#profile-name').val()
         state.profile.homeAddress = $('#profile-address').val()
+        state.profile.phoneNumber = $('#profile-phone').val()
         state.profile.isDriver = $('#profile-driver-toggle').prop('checked')
         state.profile.seatsInCar = parseInt($('#profile-app-number-rides').find(":selected").val(), 10)
     },
@@ -282,6 +285,7 @@ var app = {
                 $('#user-profile').show()
                 $('#profile-name').val(state.profile.fullName)
                 $('#profile-address').val(state.profile.homeAddress)
+                $('#profile-phone').val(state.profile.phoneNumber)
                 $('#profile-driver-toggle').prop('checked', state.profile.isDriver)
                 if (state.profile.isDriver) {
                     $('.app-number-rides-question').show()
@@ -329,7 +333,7 @@ var app = {
                 state.drivers.splice(i, 1)
                 var rider = {
                     name: state.profile.fullName,
-                    phone: '6471234567',
+                    phone: state.profile.phoneNumber,
                     distanceFromHome: 2, // API call
                     timeLeaving: '18:00', // API call
                     karma: 2 // API call
