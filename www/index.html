@@ -148,7 +148,7 @@
                     <ul class="collection">
                         {{#each riders}}
                             <li class="collection-item avatar rider">
-                                <img src="http://via.placeholder.com/50x50" data-name={{name}} data-karma={{karma}} alt="" class="circle user-image">
+                                <img src="http://via.placeholder.com/50x50" data-name={{name}} data-karma={{karma}} data-phone={{phone}} alt="" class="circle user-image">
                                 <span class="title title-name">{{name}}</span>
                                 <br>
                                 <p class="title-name color-grey"> 
@@ -174,12 +174,9 @@
                         <img class="activator" src="http://via.placeholder.com/100x50">
                     </div>
                     <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                        <p><a>This is a link</a></p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                        <p id="riderName"></p>
+                        <p id="riderPhone"></p>
+                        <p id="riderKarma"></p>
                     </div>
                 </div>
             </div>
@@ -191,7 +188,7 @@
                     <ul class="collection">
                         {{#each drivers}}
                             <li class="collection-item avatar rider">
-                                <img src="http://via.placeholder.com/50x50" data-name={{name}} data-karma={{karma}} alt="" class="circle user-image">
+                                <img src="http://via.placeholder.com/50x50" data-name={{name}} data-karma={{karma}} data-phone={{phone}} alt="" class="circle user-image">
                                 <span class="title title-name">{{name}}</span>
                                 <br>
                                 <p class="title-name color-grey"> 

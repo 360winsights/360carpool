@@ -327,6 +327,14 @@ var app = {
                 util.hideAll()
                 util.applyNavbarProfile('rider-profile')
                 $('#rider-information').show()
+                var data = {
+                    name: $(this).data('name'),
+                    phone: $(this).data('phone'),
+                    karma: $(this).data('karma')
+                }
+                $('#riderName').html(data.name);
+                $('#riderPhone').html(data.phone)
+                $('#riderKarma').html(data.karma)
             })
 
             $(document).on('click', '.accept-rider', function() {
