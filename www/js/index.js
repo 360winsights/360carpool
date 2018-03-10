@@ -55,6 +55,16 @@ var app = {
                 self.hideAll()
                 $('#new-ride').show()
             })
+
+            $('.create-ride').on('click', function () {
+                self.hideAll()
+                $('#app-riders-section').show()
+            })
+
+            $('.cancel').on('click', function () {
+                self.hideAll()
+                $('#app-riders-section').show()
+            })
         })
         
         this.bindEvents();
